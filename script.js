@@ -2,8 +2,8 @@ async function predictScore() {
   const hours = document.getElementById("hoursInput").value;
   const resultBox = document.getElementById("result");
 
-  if (!hours || isNaN(hours) || hours <= 0) {
-    resultBox.innerHTML = "⚠️ Please enter a valid number of hours.";
+  if (!hours || isNaN(hours) || hours <= 0 || hours > 24) {
+    resultBox.innerHTML = "⚠️ Please enter a valid number of hours (1–24).";
     return;
   }
 
