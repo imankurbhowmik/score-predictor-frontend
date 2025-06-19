@@ -14,10 +14,11 @@ async function predictScore() {
     const data = await response.json();
 
     // Cap the score at 100
-    let score = data.predicted_score;
+    let rawScore = data.predicted_score;
+    let score = Math.round(rawScore * 2) / 2;
     if (score > 100) score = 100;
 
-    resultBox.innerHTML = `🎯 Predicted Score: <span style="color: #6e8efb;">${score}</span>`;
+    resultBox.innerHTML = `🎯 Predicted Score: <span style="color: #6e8efb;">${score.toFixed(1)}</span>`;
   } catch (error) {
     resultBox.innerHTML = "❌ Unable to connect to the server.";
     console.error(error);
